@@ -116,25 +116,68 @@ public class BubbleSort : Sort
 
 }
 
+public class InsertionSort : Sort
+{
+    public InsertionSort(int size) : base(size)
+    {
+
+    }
+
+    public void SortArray()
+    {
+        int key = 0;
+        for (int i = 1; i < array.Length; i++)
+        {
+            int j = i;
+            key = array[j];
+            while (j > 0 && array[j - 1] > key)
+            {
+                array[j] = array[j - 1];
+                j--;
+            }
+            array[j] = key;
+        }
+    }
+}
+
+public class MergeSort : Sort
+{
+    public MergeSort(int size) : base(size)
+    {
+
+    }
+
+    public void SortArray()
+    {
+        
+        SortArray(array, 0, array.Length / 2 - 1);
+        SortArray(array, array.Length, array.Length);
+
+    }
+
+    public void SortArray(int[] arr, int start, int end)
+    {
+
+    }
+}
 public class Program
 {
     public static void Main(string[] args)
     {
         int arraySize = 20;
 
-        BubbleSort sorter = new BubbleSort(arraySize);
+        InsertionSort sorter = new InsertionSort(arraySize);
 
         sorter.FillArrayRand();
 
         Console.WriteLine("Array before sorting: ");
+
         sorter.PrintArray();
 
         sorter.SortArray();
-
         Console.WriteLine("Array after sorting: ");
+
         sorter.PrintArray();
 
     }
-    
-    
 }
